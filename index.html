@@ -771,6 +771,89 @@
             font-weight: 500;
         }
 
+        /* Legal Modal */
+        .legal-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 10000;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .legal-modal.active {
+            display: flex;
+        }
+
+        .legal-modal-content {
+            background: var(--white);
+            border-radius: 16px;
+            max-width: 720px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 3rem;
+            position: relative;
+        }
+
+        .legal-modal-content h2 {
+            font-size: 1.6rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .legal-modal-content h3 {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .legal-modal-content p,
+        .legal-modal-content li {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--text-light);
+        }
+
+        .legal-modal-content ul {
+            padding-left: 1.5rem;
+            margin: 0.5rem 0;
+        }
+
+        .legal-modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--off-white);
+            border: none;
+            color: var(--text);
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .legal-modal-close:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        @media (max-width: 768px) {
+            .legal-modal-content {
+                padding: 2rem 1.5rem;
+                margin: 1rem;
+            }
+        }
+
         /* Lightbox */
         .lightbox {
             display: none;
@@ -2008,7 +2091,7 @@
         </div>
         <div class="footer-bottom">
             <p>&copy; 2026 Office7000.dk ApS &middot; CVR: 46186761</p>
-            <p><a href="#">Privatlivspolitik</a> &middot; <a href="#">Betingelser</a></p>
+            <p><a href="#" onclick="openLegal('privacy'); return false;">Privatlivspolitik</a> &middot; <a href="#" onclick="openLegal('terms'); return false;">Betingelser</a></p>
         </div>
     </footer>
 
@@ -2120,6 +2203,110 @@
                 }
             });
         });
+    </script>
+
+    <!-- Legal Modals -->
+    <div class="legal-modal" id="privacyModal" onclick="if(event.target===this)closeLegal()">
+        <div class="legal-modal-content">
+            <button class="legal-modal-close" onclick="closeLegal()"><i class="fas fa-times"></i></button>
+            <h2>Privatlivspolitik</h2>
+            <p><strong>Sidst opdateret:</strong> 17. marts 2026</p>
+            <p>Office7000.dk ApS (CVR: 46186761) er dataansvarlig for behandlingen af de personoplysninger, vi modtager om dig. Denne politik beskriver, hvordan vi indsamler, bruger og beskytter dine data.</p>
+
+            <h3>1. Hvilke oplysninger indsamler vi?</h3>
+            <p>Vi indsamler kun oplysninger, du selv afgiver, når du kontakter os via telefon, e-mail eller kontaktformular:</p>
+            <ul>
+                <li>Navn</li>
+                <li>E-mailadresse</li>
+                <li>Telefonnummer</li>
+                <li>Virksomhedsnavn (hvis relevant)</li>
+            </ul>
+
+            <h3>2. Formål med behandlingen</h3>
+            <p>Vi bruger dine oplysninger til at:</p>
+            <ul>
+                <li>Besvare din henvendelse</li>
+                <li>Arrangere fremvisninger og møder</li>
+                <li>Sende relevant information om Office7000</li>
+                <li>Administrere lejeforhold og medlemskaber</li>
+            </ul>
+
+            <h3>3. Retsgrundlag</h3>
+            <p>Vi behandler dine personoplysninger på baggrund af dit samtykke (GDPR art. 6, stk. 1, litra a) eller for at opfylde en aftale med dig (GDPR art. 6, stk. 1, litra b).</p>
+
+            <h3>4. Opbevaring</h3>
+            <p>Vi opbevarer dine personoplysninger, så længe det er nødvendigt for det formål, de blev indsamlet til, og i overensstemmelse med gældende lovgivning. Henvendelser slettes senest 2 år efter sidste kontakt, medmindre der er et aktivt lejeforhold.</p>
+
+            <h3>5. Deling af data</h3>
+            <p>Vi sælger eller videregiver ikke dine personoplysninger til tredjeparter, medmindre det er nødvendigt for at levere vores ydelser (f.eks. bogføring) eller krævet ved lov.</p>
+
+            <h3>6. Cookies</h3>
+            <p>Denne hjemmeside bruger ikke cookies til tracking eller markedsføring. Vi kan anvende teknisk nødvendige cookies for at sikre hjemmesidens funktionalitet.</p>
+
+            <h3>7. Dine rettigheder</h3>
+            <p>Du har ret til at:</p>
+            <ul>
+                <li>Få indsigt i de oplysninger, vi har om dig</li>
+                <li>Få rettet urigtige oplysninger</li>
+                <li>Få slettet dine oplysninger</li>
+                <li>Trække dit samtykke tilbage</li>
+                <li>Klage til Datatilsynet (datatilsynet.dk)</li>
+            </ul>
+
+            <h3>8. Kontakt</h3>
+            <p>Har du spørgsmål til vores behandling af personoplysninger, kan du kontakte os på:</p>
+            <p>Office7000.dk ApS<br>Sjællandsgade 10, 7000 Fredericia<br>E-mail: kontakt@office7000.dk<br>Tlf: +45 22 22 93 05</p>
+        </div>
+    </div>
+
+    <div class="legal-modal" id="termsModal" onclick="if(event.target===this)closeLegal()">
+        <div class="legal-modal-content">
+            <button class="legal-modal-close" onclick="closeLegal()"><i class="fas fa-times"></i></button>
+            <h2>Betingelser</h2>
+            <p><strong>Sidst opdateret:</strong> 17. marts 2026</p>
+            <p>Disse generelle betingelser gælder for brug af hjemmesiden office7000.dk samt for henvendelser og aftaler med Office7000.dk ApS (CVR: 46186761).</p>
+
+            <h3>1. Hjemmesiden</h3>
+            <p>Indholdet på denne hjemmeside er udelukkende til informationsformål. Vi bestræber os på at holde oplysningerne opdaterede og korrekte, men vi garanterer ikke for fuldstændighed eller nøjagtighed. Priser, faciliteter og vilkår kan ændres uden forudgående varsel.</p>
+
+            <h3>2. Medlemskab og lejeaftale</h3>
+            <p>Indgåelse af medlemskab eller leje af kontorplads kræver en separat skriftlig aftale. De specifikke vilkår, herunder pris, opsigelsesvarsel og inkluderede ydelser, fremgår af den individuelle aftale.</p>
+
+            <h3>3. Priser</h3>
+            <p>Alle priser på hjemmesiden er vejledende og angivet ekskl. moms, medmindre andet er angivet. Den endelige pris aftales i den individuelle lejeaftale.</p>
+
+            <h3>4. Ansvar</h3>
+            <p>Office7000.dk ApS fraskriver sig ansvar for:</p>
+            <ul>
+                <li>Tab eller skade som følge af brug af hjemmesidens indhold</li>
+                <li>Midlertidig utilgængelighed af hjemmesiden</li>
+                <li>Indhold på tredjepartshjemmesider, vi linker til</li>
+            </ul>
+
+            <h3>5. Immaterielle rettigheder</h3>
+            <p>Alt indhold på hjemmesiden, herunder tekst, billeder, grafik og logoer, tilhører Office7000.dk ApS og må ikke kopieres, distribueres eller anvendes uden skriftlig tilladelse.</p>
+
+            <h3>6. Force majeure</h3>
+            <p>Office7000.dk ApS er ikke ansvarlig for manglende opfyldelse af forpligtelser, der skyldes omstændigheder uden for vores kontrol, herunder naturkatastrofer, strejker, pandemier eller myndighedspåbud.</p>
+
+            <h3>7. Lovvalg og tvister</h3>
+            <p>Disse betingelser er underlagt dansk ret. Eventuelle tvister søges løst i mindelighed og afgøres i sidste instans ved Retten i Kolding.</p>
+
+            <h3>8. Kontakt</h3>
+            <p>Office7000.dk ApS<br>Sjællandsgade 10, 7000 Fredericia<br>E-mail: kontakt@office7000.dk<br>Tlf: +45 22 22 93 05</p>
+        </div>
+    </div>
+
+    <script>
+        function openLegal(type) {
+            document.getElementById(type === 'privacy' ? 'privacyModal' : 'termsModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLegal() {
+            document.querySelectorAll('.legal-modal').forEach(m => m.classList.remove('active'));
+            document.body.style.overflow = '';
+        }
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLegal(); });
     </script>
 
 </body>
