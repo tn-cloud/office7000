@@ -7,14 +7,14 @@
     <meta name="description" content="Office7000 - Fredericias mest eksklusive kontorfællesskab ved Kanalbyen. Moderne kontorpladser, vinklub, fredagsbar og et levende fællesskab.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
             --primary: #1a1a2e;
-            --accent: #c9a84c;
+            --accent: #cbb26a;
             --accent-light: #e8d5a0;
-            --accent-dark: #a88a32;
+            --accent-dark: #905e26;
             --white: #ffffff;
             --off-white: #f8f6f1;
             --light-gray: #e8e6e1;
@@ -64,16 +64,18 @@
         }
 
         .nav-logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--white);
+            display: flex;
+            align-items: center;
             text-decoration: none;
-            letter-spacing: 1px;
         }
 
-        .nav-logo span {
-            color: var(--accent);
+        .nav-logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .nav.scrolled .nav-logo img {
+            height: 34px;
         }
 
         .nav-links {
@@ -238,7 +240,7 @@
         }
 
         .hero h1 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 900;
             font-size: clamp(2.8rem, 6vw, 5.5rem);
             font-weight: 700;
             color: var(--white);
@@ -368,7 +370,7 @@
         }
 
         .section-title {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 900;
             font-size: clamp(2rem, 4vw, 3.2rem);
             font-weight: 700;
             color: var(--primary);
@@ -450,7 +452,7 @@
         }
 
         .kanalbyen-stats .number {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 900;
             font-size: 2.5rem;
             font-weight: 700;
             color: var(--accent);
@@ -942,7 +944,7 @@
         }
 
         .lifestyle-card h3 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 900;
             font-size: 1.4rem;
             font-weight: 600;
             color: var(--primary);
@@ -1032,7 +1034,7 @@
         }
 
         .pricing-card h3 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 900;
             font-size: 1.8rem;
             margin-bottom: 0.5rem;
         }
@@ -1058,7 +1060,7 @@
         }
 
         .price-amount .number {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 900;
             font-size: 4rem;
             font-weight: 700;
             color: var(--white);
@@ -1128,7 +1130,7 @@
         }
 
         .location-info h3 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 900;
             font-size: 1.5rem;
             color: var(--primary);
             margin-bottom: 1.5rem;
@@ -1218,7 +1220,7 @@
         }
 
         .cta h2 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 900;
             font-size: clamp(2rem, 4vw, 3rem);
             color: var(--white);
             margin-bottom: 1rem;
@@ -1261,15 +1263,12 @@
         }
 
         .footer-brand .footer-logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--white);
             margin-bottom: 1rem;
         }
 
-        .footer-brand .footer-logo span {
-            color: var(--accent);
+        .footer-brand .footer-logo img {
+            height: 36px;
+            width: auto;
         }
 
         .footer-brand p {
@@ -1503,7 +1502,7 @@
 
     <!-- NAVIGATION -->
     <nav class="nav" id="nav">
-        <a href="#" class="nav-logo">OFFICE<span>7000</span></a>
+        <a href="#" class="nav-logo"><img src="images/logo.svg" alt="Office7000"></a>
         <ul class="nav-links" id="navLinks">
             <li><a href="#kanalbyen">Kanalbyen</a></li>
             <li><a href="#features">Faciliteter</a></li>
@@ -1968,7 +1967,7 @@
     <footer class="footer">
         <div class="footer-grid">
             <div class="footer-brand">
-                <div class="footer-logo">OFFICE<span>7000</span></div>
+                <div class="footer-logo"><img src="images/logo.svg" alt="Office7000"></div>
                 <p>Fredericias mest eksklusive kontorfællesskab i hjertet af Kanalbyen. Moderne arbejdspladser, inspirerende fællesskab og en livsstil ud over det sædvanlige.</p>
                 <div class="footer-social">
                     <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
