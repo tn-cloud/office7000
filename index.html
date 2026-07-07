@@ -603,12 +603,44 @@
             background: var(--off-white);
         }
 
+        .gallery-filters {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.6rem;
+            margin: 2.5rem auto 0;
+        }
+
+        .gallery-filter {
+            background: transparent;
+            border: 1px solid rgba(26, 26, 46, 0.15);
+            color: var(--text);
+            padding: 0.65rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            font-family: inherit;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .gallery-filter:hover {
+            border-color: var(--accent);
+            color: var(--accent-dark);
+        }
+
+        .gallery-filter.active {
+            background: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: 300px 300px;
             gap: 1.5rem;
-            margin-top: 3rem;
+            margin-top: 2rem;
         }
 
         .gallery-item {
@@ -616,6 +648,11 @@
             overflow: hidden;
             position: relative;
             cursor: pointer;
+            aspect-ratio: 4 / 3;
+        }
+
+        .gallery-item.hidden {
+            display: none;
         }
 
         .gallery-item img {
@@ -650,126 +687,6 @@
             font-weight: 500;
         }
 
-        .gallery-item:first-child {
-            grid-row: span 2;
-        }
-
-        /* ===== RENDERINGS ===== */
-        .renderings {
-            background: var(--primary);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .renderings::before {
-            content: '';
-            position: absolute;
-            bottom: -200px;
-            left: -100px;
-            width: 500px;
-            height: 500px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(203, 178, 106, 0.06), transparent 70%);
-        }
-
-        .renderings .section-label {
-            color: var(--accent);
-        }
-
-        .renderings .section-title {
-            color: var(--white);
-        }
-
-        .renderings .section-desc {
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        .renderings-hero {
-            margin-top: 3rem;
-            border-radius: 16px;
-            overflow: hidden;
-            position: relative;
-            cursor: pointer;
-        }
-
-        .renderings-hero img {
-            width: 100%;
-            height: 500px;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .renderings-hero:hover img {
-            transform: scale(1.02);
-        }
-
-        .renderings-hero .render-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(26, 26, 46, 0.7), transparent 50%);
-            display: flex;
-            align-items: flex-end;
-            padding: 2.5rem;
-        }
-
-        .renderings-hero .render-overlay .render-tag {
-            background: var(--accent);
-            color: var(--primary);
-            padding: 0.4rem 1rem;
-            border-radius: 4px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-        }
-
-        .renderings-row {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.2rem;
-            margin-top: 1.2rem;
-        }
-
-        .render-thumb {
-            border-radius: 12px;
-            overflow: hidden;
-            position: relative;
-            cursor: pointer;
-            aspect-ratio: 16/10;
-        }
-
-        .render-thumb img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .render-thumb:hover img {
-            transform: scale(1.05);
-        }
-
-        .render-thumb .render-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(26, 26, 46, 0.6), transparent 60%);
-            opacity: 0;
-            transition: opacity 0.4s;
-            display: flex;
-            align-items: flex-end;
-            padding: 1rem;
-        }
-
-        .render-thumb:hover .render-overlay {
-            opacity: 1;
-        }
-
-        .render-thumb .render-overlay span {
-            color: var(--white);
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
 
         /* Legal Modal */
         .legal-modal {
@@ -851,121 +768,6 @@
             .legal-modal-content {
                 padding: 2rem 1.5rem;
                 margin: 1rem;
-            }
-        }
-
-        /* Lightbox */
-        .lightbox {
-            display: none;
-            position: fixed;
-            inset: 0;
-            z-index: 9999;
-            background: rgba(0, 0, 0, 0.92);
-            backdrop-filter: blur(10px);
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
-
-        .lightbox.active {
-            display: flex;
-        }
-
-        .lightbox img {
-            max-width: 90vw;
-            max-height: 85vh;
-            object-fit: contain;
-            border-radius: 8px;
-            box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5);
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: 1.5rem;
-            right: 2rem;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: var(--white);
-            font-size: 1.2rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-        }
-
-        .lightbox-close:hover {
-            background: var(--accent);
-            color: var(--primary);
-            border-color: var(--accent);
-        }
-
-        .lightbox-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: var(--white);
-            font-size: 1rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-        }
-
-        .lightbox-nav:hover {
-            background: var(--accent);
-            color: var(--primary);
-            border-color: var(--accent);
-        }
-
-        .lightbox-prev {
-            left: 2rem;
-        }
-
-        .lightbox-next {
-            right: 2rem;
-        }
-
-        .lightbox-counter {
-            position: absolute;
-            bottom: 1.5rem;
-            left: 50%;
-            transform: translateX(-50%);
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.85rem;
-            font-weight: 500;
-            letter-spacing: 2px;
-        }
-
-        @media (max-width: 768px) {
-            .renderings-row {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .renderings-hero img {
-                height: 280px;
-            }
-
-            .lightbox-prev {
-                left: 0.5rem;
-            }
-
-            .lightbox-next {
-                right: 0.5rem;
-            }
-
-            .lightbox-nav {
-                width: 40px;
-                height: 40px;
             }
         }
 
@@ -1082,15 +884,24 @@
             margin: 0 auto 3rem;
         }
 
-        .pricing-card {
-            max-width: 700px;
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
             margin: 0 auto;
+            align-items: stretch;
+        }
+
+        .pricing-card {
             background: var(--primary);
             border-radius: 20px;
             padding: 3.5rem;
             position: relative;
             overflow: hidden;
             color: var(--white);
+            display: flex;
+            flex-direction: column;
         }
 
         .pricing-card::before {
@@ -1198,6 +1009,7 @@
             font-size: 0.9rem;
             position: relative;
             z-index: 1;
+            margin-top: auto;
         }
 
         /* ===== LOCATION MAP ===== */
@@ -1525,20 +1337,25 @@
             }
 
             .features-grid,
-            .lifestyle-grid,
-            .gallery-grid {
+            .lifestyle-grid {
                 grid-template-columns: 1fr;
             }
 
             .gallery-grid {
-                grid-template-rows: 250px 250px 250px 250px 250px;
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
             }
 
-            .gallery-item:first-child {
-                grid-row: span 1;
+            .gallery-filter {
+                padding: 0.5rem 1rem;
+                font-size: 0.75rem;
             }
 
             .pricing-features {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -1592,7 +1409,6 @@
             <li><a href="#kanalbyen">Kanalbyen</a></li>
             <li><a href="#features">Faciliteter</a></li>
             <li><a href="#gallery">Galleri</a></li>
-            <li><a href="#renderings">Renderinger</a></li>
             <li><a href="#lifestyle">Livsstil</a></li>
             <li><a href="#pricing">Priser</a></li>
             <li><a href="#contact" class="nav-cta">Kontakt Os</a></li>
@@ -1749,77 +1565,110 @@
             <p class="section-desc">
                 Moderne, lyse og inspirerende rammer designet til at booste din produktivitet.
             </p>
-            <p style="display: inline-block; background: var(--primary); color: var(--accent); font-size: 0.8rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 0.5rem 1.2rem; border-radius: 50px; margin-top: 0.5rem;">
-                <i class="fas fa-camera" style="margin-right: 0.4rem;"></i>Illustrationsbilleder — Ægte billeder kommer snart
-            </p>
-            <div class="gallery-grid">
-                <div class="gallery-item reveal">
-                    <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&q=80" alt="Åbent kontormiljø">
-                    <div class="overlay"><span>Åbent kontormiljø</span></div>
+            <div class="gallery-filters" id="galleryFilters">
+                <button type="button" class="gallery-filter active" data-category="all">Alle</button>
+                <button type="button" class="gallery-filter" data-category="udendoers">Udendørs</button>
+                <button type="button" class="gallery-filter" data-category="kontorer">Kontorer</button>
+                <button type="button" class="gallery-filter" data-category="moedelokaler">Mødelokaler</button>
+                <button type="button" class="gallery-filter" data-category="koekken">Køkken &amp; Lounge</button>
+                <button type="button" class="gallery-filter" data-category="faciliteter">Faciliteter</button>
+            </div>
+            <div class="gallery-grid" id="galleryGrid">
+                <div class="gallery-item reveal" data-categories="udendoers">
+                    <img src="images/gallery/office7000-272.jpg" alt="Udsigt til Lillebæltsbroen fra Kanalbyen" loading="lazy">
+                    <div class="overlay"><span>Udsigt til Lillebæltsbroen</span></div>
                 </div>
-                <div class="gallery-item reveal">
-                    <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=600&q=80" alt="Moderne mødelokale">
-                    <div class="overlay"><span>Mødelokale</span></div>
+                <div class="gallery-item reveal" data-categories="udendoers">
+                    <img src="images/gallery/office7000-249.jpg" alt="Office7000 set fra kanalen" loading="lazy">
+                    <div class="overlay"><span>Office7000 ved kanalen</span></div>
                 </div>
-                <div class="gallery-item reveal">
-                    <img src="https://images.unsplash.com/photo-1600508774634-4e11d34730e2?w=600&q=80" alt="Fælles lounge">
-                    <div class="overlay"><span>Lounge Område</span></div>
+                <div class="gallery-item reveal" data-categories="udendoers">
+                    <img src="images/gallery/office7000-247.jpg" alt="Office7000 bygningen fra havnesiden" loading="lazy">
+                    <div class="overlay"><span>Bygningen fra havnesiden</span></div>
                 </div>
-                <div class="gallery-item reveal">
-                    <img src="https://images.unsplash.com/photo-1497215842964-222b430dc094?w=600&q=80" alt="Kreativt arbejdsrum">
-                    <div class="overlay"><span>Kreativt Workspace</span></div>
+                <div class="gallery-item reveal" data-categories="udendoers">
+                    <img src="images/gallery/office7000-260.jpg" alt="Kanalbyen med moderne havneboliger" loading="lazy">
+                    <div class="overlay"><span>Kanalbyen</span></div>
                 </div>
-                <div class="gallery-item reveal">
-                    <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=600&q=80" alt="Køkken og social zone">
-                    <div class="overlay"><span>Køkken &amp; Social Zone</span></div>
+                <div class="gallery-item reveal" data-categories="udendoers">
+                    <img src="images/gallery/office7000-270.jpg" alt="Bro over kanalen i Kanalbyen" loading="lazy">
+                    <div class="overlay"><span>Bro over kanalen</span></div>
+                </div>
+                <div class="gallery-item reveal" data-categories="kontorer">
+                    <img src="images/gallery/office7000-215.jpg" alt="Arbejdsstationer med hængende planter" loading="lazy">
+                    <div class="overlay"><span>Åbne arbejdsstationer</span></div>
+                </div>
+                <div class="gallery-item reveal" data-categories="kontorer">
+                    <img src="images/gallery/office7000-205.jpg" alt="Arbejdsstation med dobbelt skærm" loading="lazy">
+                    <div class="overlay"><span>Arbejdsstation</span></div>
+                </div>
+                <div class="gallery-item reveal" data-categories="kontorer">
+                    <img src="images/gallery/office7000-207.jpg" alt="Kontor med skabe og hængende planter" loading="lazy">
+                    <div class="overlay"><span>Kontorlandskab</span></div>
+                </div>
+                <div class="gallery-item reveal" data-categories="kontorer">
+                    <img src="images/gallery/office7000-225.jpg" alt="Kontor med Harley Davidson og hængeplanter" loading="lazy">
+                    <div class="overlay"><span>Unik atmosfære</span></div>
+                </div>
+                <div class="gallery-item reveal" data-categories="kontorer">
+                    <img src="images/gallery/office7000-239.jpg" alt="Kontor med skabe og mødelokale" loading="lazy">
+                    <div class="overlay"><span>Fleksibelt kontor</span></div>
+                </div>
+                <div class="gallery-item reveal" data-categories="moedelokaler">
+                    <img src="images/gallery/office7000-217.jpg" alt="Mødelokale med ringlamper og læderstole" loading="lazy">
+                    <div class="overlay"><span>Mødelokale med glasvægge</span></div>
+                </div>
+                <div class="gallery-item reveal" data-categories="moedelokaler kontorer">
+                    <img src="images/gallery/office7000-213.jpg" alt="Åbent kontor med mødelokale i baggrunden" loading="lazy">
+                    <div class="overlay"><span>Mødelokale &amp; arbejdsområde</span></div>
+                </div>
+                <div class="gallery-item reveal" data-categories="koekken">
+                    <img src="images/gallery/office7000-237.jpg" alt="Office7000 velkomstområde med logo" loading="lazy">
+                    <div class="overlay"><span>Velkomstområde</span></div>
+                </div>
+                <div class="gallery-item reveal" data-categories="koekken">
+                    <img src="images/gallery/office7000-203.jpg" alt="Café og lounge med vinklub" loading="lazy">
+                    <div class="overlay"><span>Café &amp; lounge</span></div>
+                </div>
+                <div class="gallery-item reveal" data-categories="koekken">
+                    <img src="images/gallery/office7000-199.jpg" alt="Spisebord med udsigt til Kanalbyen" loading="lazy">
+                    <div class="overlay"><span>Spisebord med udsigt</span></div>
+                </div>
+                <div class="gallery-item reveal" data-categories="koekken">
+                    <img src="images/gallery/office7000-197.jpg" alt="Køkken med vinkøleskabe - Wine o'clock" loading="lazy">
+                    <div class="overlay"><span>Wine o'clock</span></div>
+                </div>
+                <div class="gallery-item reveal" data-categories="koekken">
+                    <img src="images/gallery/office7000-191.jpg" alt="Køkken med spisebord og vinklub" loading="lazy">
+                    <div class="overlay"><span>Fælles køkken</span></div>
+                </div>
+                <div class="gallery-item reveal" data-categories="koekken">
+                    <img src="images/gallery/office7000-185.jpg" alt="Lounge og fredagsbar med Office7000 logo" loading="lazy">
+                    <div class="overlay"><span>Lounge &amp; fredagsbar</span></div>
+                </div>
+                <div class="gallery-item reveal" data-categories="koekken">
+                    <img src="images/gallery/office7000-181.jpg" alt="Spisebord ved udgang til udearealer" loading="lazy">
+                    <div class="overlay"><span>Spiseområde</span></div>
+                </div>
+                <div class="gallery-item reveal" data-categories="faciliteter">
+                    <img src="images/gallery/office7000-111.jpg" alt="Bordfodbold og sociale aktiviteter" loading="lazy">
+                    <div class="overlay"><span>Bordfodbold &amp; pauser</span></div>
+                </div>
+                <div class="gallery-item reveal" data-categories="faciliteter">
+                    <img src="images/gallery/office7000-179.jpg" alt="Elegant badeværelse med håndvask" loading="lazy">
+                    <div class="overlay"><span>Badefaciliteter</span></div>
+                </div>
+                <div class="gallery-item reveal" data-categories="faciliteter">
+                    <img src="images/gallery/office7000-175.jpg" alt="Badeværelse med design-armaturer" loading="lazy">
+                    <div class="overlay"><span>Wellness-område</span></div>
+                </div>
+                <div class="gallery-item reveal" data-categories="faciliteter">
+                    <img src="images/gallery/office7000-177.jpg" alt="Bruser med messing-armaturer" loading="lazy">
+                    <div class="overlay"><span>Brusefaciliteter</span></div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- RENDERINGS -->
-    <section class="renderings" id="renderings">
-        <div class="container">
-            <div class="section-label">3D Visualiseringer</div>
-            <h2 class="section-title">Se dit fremtidige <em>kontor</em></h2>
-            <p class="section-desc">
-                Udforsk vores detaljerede 3D-renderinger og få et eksklusivt indblik i de gennemtænkte rum, der venter dig hos Office7000.
-            </p>
-            <div class="renderings-hero reveal" onclick="openLightbox(0)">
-                <img src="images/rendering-1.jpg" alt="Office7000 3D plantegning - fuld oversigt over kontorfællesskabet">
-                <div class="render-overlay">
-                    <span class="render-tag"><i class="fas fa-expand"></i>&nbsp; 3D Plantegning &mdash; Klik for fuld visning</span>
-                </div>
-            </div>
-            <div class="renderings-row">
-                <div class="render-thumb reveal" onclick="openLightbox(1)">
-                    <img src="images/rendering-2.jpg" alt="Mødelokale med glasvægge og kunstværker">
-                    <div class="render-overlay"><span>Mødelokale</span></div>
-                </div>
-                <div class="render-thumb reveal" onclick="openLightbox(2)">
-                    <img src="images/rendering-3.jpg" alt="Konference og lounge set fra oven med ringlamper">
-                    <div class="render-overlay"><span>Konference &amp; Lounge</span></div>
-                </div>
-                <div class="render-thumb reveal" onclick="openLightbox(3)">
-                    <img src="images/rendering-4.jpg" alt="Arbejdsstationer med skærme og TV2 News">
-                    <div class="render-overlay"><span>Arbejdsstationer</span></div>
-                </div>
-                <div class="render-thumb reveal" onclick="openLightbox(4)">
-                    <img src="images/rendering-5.jpg" alt="Office7000 indgangsparti med Velkommen-skilt">
-                    <div class="render-overlay"><span>Indgangsparti</span></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- LIGHTBOX -->
-    <div class="lightbox" id="lightbox">
-        <button class="lightbox-close" onclick="closeLightbox()"><i class="fas fa-times"></i></button>
-        <button class="lightbox-nav lightbox-prev" onclick="navigateLightbox(-1)"><i class="fas fa-chevron-left"></i></button>
-        <img id="lightbox-img" src="" alt="Rendering forstørret">
-        <button class="lightbox-nav lightbox-next" onclick="navigateLightbox(1)"><i class="fas fa-chevron-right"></i></button>
-        <div class="lightbox-counter" id="lightbox-counter"></div>
-    </div>
 
     <!-- LIFESTYLE — VINKLUB, FREDAGSBAR, CAFÉ -->
     <section class="lifestyle" id="lifestyle">
@@ -1902,66 +1751,124 @@
     <!-- PRICING -->
     <section class="pricing" id="pricing">
         <div class="container">
-            <div class="section-label">Investér i din fremtid</div>
-            <h2 class="section-title">Én pris. <em>Alt inkluderet.</em></h2>
+            <div class="section-label">Vælg din plads</div>
+            <h2 class="section-title">Fleksibel eller <em>fast plads.</em></h2>
             <p class="section-desc">
-                Ingen skjulte gebyrer, ingen overraskelser. Alt hvad du behøver er samlet i ét simpelt, gennemskueligt abonnement.
+                Ingen skjulte gebyrer, ingen overraskelser. Vælg mellem en fleksibel ordning eller din egen faste kontorplads &mdash; begge med adgang til alle faciliteter.
             </p>
-            <div class="pricing-card reveal">
-                <span class="popular-badge">Premium Kontorplads</span>
-                <h3>Alt Inkluderet</h3>
-                <p class="price-desc">Møbleret kontorplads med alle faciliteter</p>
-                <div class="price-amount">
-                    <span class="number">5.499</span>
-                    <span class="currency">kr</span>
+            <div class="pricing-grid">
+                <div class="pricing-card reveal">
+                    <span class="popular-badge">Fleksibel Adgang</span>
+                    <h3>FlexDesk</h3>
+                    <p class="price-desc">Fleksibel plads uden fast skrivebord &mdash; til dig der er her 2-3 dage om ugen</p>
+                    <div class="price-amount">
+                        <span class="number">2.749</span>
+                        <span class="currency">kr</span>
+                    </div>
+                    <p class="price-vat">pr. måned &middot; ex. moms</p>
+                    <div class="pricing-features">
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Fleksibel plads uden fastplads</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Adgang 2-3 dage om ugen</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Højhastigheds internet</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Kaffe, te &amp; vand</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Adgang til mødelokaler</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Lounge &amp; gæsteområde</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Fælles køkken</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Rengøring inkluderet</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Vinklub &amp; fredagsbar</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Netværk &amp; fællesskab</span>
+                        </div>
+                    </div>
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-arrow-right"></i>
+                        Book En Fremvisning
+                    </a>
                 </div>
-                <p class="price-vat">pr. måned &middot; ex. moms</p>
-                <div class="pricing-features">
-                    <div class="pricing-feature">
-                        <i class="fas fa-check"></i>
-                        <span>Møbleret kontorplads</span>
+                <div class="pricing-card reveal">
+                    <span class="popular-badge">Premium Kontorplads</span>
+                    <h3>Alt Inkluderet</h3>
+                    <p class="price-desc">Møbleret kontorplads med alle faciliteter</p>
+                    <div class="price-amount">
+                        <span class="number">5.499</span>
+                        <span class="currency">kr</span>
                     </div>
-                    <div class="pricing-feature">
-                        <i class="fas fa-check"></i>
-                        <span>24/7 adgang hele året</span>
+                    <p class="price-vat">pr. måned &middot; ex. moms</p>
+                    <div class="pricing-features">
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Møbleret kontorplads</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>24/7 adgang hele året</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Højhastigheds internet</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Kaffe, te &amp; vand</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Adgang til mødelokaler</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Lounge &amp; gæsteområde</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Fælles køkken</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Rengøring inkluderet</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Vinklub &amp; fredagsbar</span>
+                        </div>
+                        <div class="pricing-feature">
+                            <i class="fas fa-check"></i>
+                            <span>Netværk &amp; fællesskab</span>
+                        </div>
                     </div>
-                    <div class="pricing-feature">
-                        <i class="fas fa-check"></i>
-                        <span>Højhastigheds internet</span>
-                    </div>
-                    <div class="pricing-feature">
-                        <i class="fas fa-check"></i>
-                        <span>Kaffe, te &amp; vand</span>
-                    </div>
-                    <div class="pricing-feature">
-                        <i class="fas fa-check"></i>
-                        <span>Adgang til mødelokaler</span>
-                    </div>
-                    <div class="pricing-feature">
-                        <i class="fas fa-check"></i>
-                        <span>Lounge &amp; gæsteområde</span>
-                    </div>
-                    <div class="pricing-feature">
-                        <i class="fas fa-check"></i>
-                        <span>Fælles køkken</span>
-                    </div>
-                    <div class="pricing-feature">
-                        <i class="fas fa-check"></i>
-                        <span>Rengøring inkluderet</span>
-                    </div>
-                    <div class="pricing-feature">
-                        <i class="fas fa-check"></i>
-                        <span>Vinklub &amp; fredagsbar</span>
-                    </div>
-                    <div class="pricing-feature">
-                        <i class="fas fa-check"></i>
-                        <span>Netværk &amp; fællesskab</span>
-                    </div>
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-arrow-right"></i>
+                        Book En Fremvisning
+                    </a>
                 </div>
-                <a href="#contact" class="btn btn-primary">
-                    <i class="fas fa-arrow-right"></i>
-                    Book En Fremvisning
-                </a>
             </div>
         </div>
     </section>
@@ -2144,53 +2051,23 @@
             particlesContainer.appendChild(particle);
         }
 
-        // Lightbox
-        const renderImages = [
-            'images/rendering-1.jpg',
-            'images/rendering-2.jpg',
-            'images/rendering-3.jpg',
-            'images/rendering-4.jpg',
-            'images/rendering-5.jpg'
-        ];
-        const renderTitles = ['3D Plantegning', 'Mødelokale', 'Konference & Lounge', 'Arbejdsstationer', 'Indgangsparti'];
-        let currentLightbox = 0;
-
-        function openLightbox(index) {
-            currentLightbox = index;
-            const lightbox = document.getElementById('lightbox');
-            const img = document.getElementById('lightbox-img');
-            const counter = document.getElementById('lightbox-counter');
-            img.src = renderImages[index];
-            img.alt = renderTitles[index];
-            counter.textContent = `${index + 1} / ${renderImages.length} — ${renderTitles[index]}`;
-            lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeLightbox() {
-            document.getElementById('lightbox').classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        function navigateLightbox(dir) {
-            currentLightbox = (currentLightbox + dir + renderImages.length) % renderImages.length;
-            const img = document.getElementById('lightbox-img');
-            const counter = document.getElementById('lightbox-counter');
-            img.src = renderImages[currentLightbox];
-            img.alt = renderTitles[currentLightbox];
-            counter.textContent = `${currentLightbox + 1} / ${renderImages.length} — ${renderTitles[currentLightbox]}`;
-        }
-
-        document.getElementById('lightbox').addEventListener('click', (e) => {
-            if (e.target === e.currentTarget) closeLightbox();
-        });
-
-        document.addEventListener('keydown', (e) => {
-            const lightbox = document.getElementById('lightbox');
-            if (!lightbox.classList.contains('active')) return;
-            if (e.key === 'Escape') closeLightbox();
-            if (e.key === 'ArrowLeft') navigateLightbox(-1);
-            if (e.key === 'ArrowRight') navigateLightbox(1);
+        // Gallery filter
+        const galleryFilters = document.querySelectorAll('.gallery-filter');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        galleryFilters.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const category = btn.dataset.category;
+                galleryFilters.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                galleryItems.forEach(item => {
+                    const cats = (item.dataset.categories || '').split(/\s+/);
+                    if (category === 'all' || cats.includes(category)) {
+                        item.classList.remove('hidden');
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                });
+            });
         });
 
         // Smooth scroll for anchor links
